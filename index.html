@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Supplies Medivia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧮</text></svg>">
+    <meta name="description" content="Calculadora de supplies para o jogo Medivia - Calcule seus gastos de hunt">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Calculadora Supplies Medivia</h1>
+        </header>
+        
+        <div class="panels-container">
+            <div class="panel instructions-panel">
+                <h2><i class="fas fa-info-circle"></i> Instruções</h2>
+                
+                <div class="form-group">
+                    <p><strong>Como usar a calculadora:</strong></p>
+                    <ol>
+                        <li>Selecione um item da lista</li>
+                        <li>Informe a quantidade levada</li>
+                        <li>Informe a quantidade restante</li>
+                        <li>Clique em "Adicionar Item"</li>
+                        <li>Repita para todos os itens necessários</li>
+                        <li>Clique em "Calcular" para ver o resumo</li>
+                    </ol>
+                </div>
+                
+                <div class="form-group">
+                    <p><strong>Gerenciamento de itens:</strong></p>
+                    <ul>
+                        <li>Para editar um item, clique no ícone <i class="fas fa-edit" style="color: #3498db;"></i></li>
+                        <li>Para remover um item, clique no ícone <i class="fas fa-times" style="color: #e74c3c;"></i></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="panel supplies-panel">
+                <h2><i class="fas fa-plus-circle"></i> Adicionar Supplies</h2>
+                
+                <div class="form-group">
+                    <label>Selecione um Item:</label>
+                    <div class="quick-items">
+                        <div class="quick-item" data-price="145" data-name="UH Rune">
+                            <div>UH Rune</div>
+                            <div class="quick-item-price">145 gp</div>
+                        </div>
+                        <div class="quick-item" data-price="330" data-name="SD Rune">
+                            <div>SD Rune</div>
+                            <div class="quick-item-price">330 gp</div>
+                        </div>
+                        <div class="quick-item" data-price="260" data-name="Explosion Rune">
+                            <div>Explosion Rune</div>
+                            <div class="quick-item-price">260 gp</div>
+                        </div>
+                        <div class="quick-item" data-price="85" data-name="HMM Rune">
+                            <div>HMM Rune</div>
+                            <div class="quick-item-price">85 gp</div>
+                        </div>
+                        <div class="quick-item" data-price="55" data-name="Biriba/Bolt">
+                            <div>Biriba/Bolt</div>
+                            <div class="quick-item-price">55 gp</div>
+                        </div>
+                        <div class="quick-item" data-price="850" data-name="Big Mana Potion">
+                            <div>Big Mana Potion</div>
+                            <div class="quick-item-price">850 gp</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="input-row">
+                    <div class="form-group">
+                        <label for="qtdInicial">Quantidade Levada:</label>
+                        <input type="number" id="qtdInicial" min="0">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="qtdRestante">Quantidade Restante:</label>
+                        <input type="number" id="qtdRestante" min="0">
+                    </div>
+                </div>
+                
+                <div class="buttons">
+                    <button class="btn-add" id="btn-adicionar">
+                        <i class="fas fa-plus"></i> Adicionar Item
+                    </button>
+                    <button class="btn-calculate" id="btn-calcular">
+                        <i class="fas fa-calculator"></i> Calcular
+                    </button>
+                    <button class="btn-reset" id="btn-reset">
+                        <i class="fas fa-trash"></i> Limpar Tudo
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="panel" id="supplies-added-panel">
+            <h2><i class="fas fa-list"></i> Supplies Adicionados</h2>
+            
+            <ul id="lista">
+                <li class="empty-state">Nenhum supply adicionado ainda</li>
+            </ul>
+        </div>
+        
+        <div class="resultado" id="resultado">
+            <h2><i class="fas fa-file-invoice-dollar"></i> Resumo da Hunt</h2>
+            
+            <span id="total">0 gp</span>
+            
+            <table class="results-table">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Quantidade<br>Levada (BP)</th>
+                        <th>Quantidade<br>Restante (BP)</th>
+                        <th>Gasto (BP)</th>
+                        <th>Preço<br>Unit.</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody id="results-body">
+                    <!-- Os resultados serão inseridos aqui -->
+                </tbody>
+            </table>
+            
+            <button class="btn-back" id="btn-voltar">
+                <i class="fas fa-arrow-left"></i> Voltar para Lista
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
