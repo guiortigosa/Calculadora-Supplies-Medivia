@@ -1,173 +1,289 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora Supplies Medivia</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg极速赛车开奖直播%22 viewBox=%220 0 100 100%22><text y=%22.9极速赛车开奖直播em%22 font-size=%2290%22>🧮</text></svg>">
-    <meta name="description" content="Calculadora de supplies para o jogo Medivia - Calcule seus gastos de hunt">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="container">
-        <header>
-            <h1>Calculadora Supplies Medivia</h1>
-        </header>
-        
-        <div class="panels-container">
-            <div class="panel instructions-panel">
-                <h2><i class="fas fa-info-circle"></i> Instruções</h2>
-                
-                <div class="instructions-content">
-                    <div class="tab-buttons">
-                        <button class="tab-btn active" data-tab="como-usar">
-                            <i class="fas fa-play-circle"></i> Como Usar
-                        </button>
-                        <button class="tab-btn" data-tab="funcoes">
-                            <i class="fas fa-cogs"></i> Funções
-                        </button>
-                        <button class="tab-btn" data-tab="atalhos">
-                            <i class="fas fa-keyboard"></i> Atalhos
-                        </button>
-                    </div>
-                    
-                    <div class="tab-content active" id="como-usar-content">
-                        <div class="instruction-card">
-                            <h3><i class="fas fa-play-circle"></i> Como Usar</h3>
-                            <ol>
-                                <li class="compact-text">Selecione um item da lista de supplies</li>
-                                <li class="compact-text">Informe a quantidade levada para a hunt</li>
-                                <li class="compact-text">Informe a quantidade restante após a hunt</li>
-                                <li class="compact-text">Clique em <span class="highlight">"Adicionar Item"</span></li>
-                                <li class="compact-text">Repita para todos os itens utilizados</li>
-                                <li class="compact-text">Clique em <span class="highlight">"Calcular"</span> para ver o resumo completo</li>
-                                <li class="compact-text">Se deixar a <span class="highlight">Quantidade Restante</span> em branco, será considerado que você usou todos os supplies levados</li>
-                            </ol>
-                        </div>
-                    </div>
-                    
-                    <div class="tab-content" id="funcoes-content">
-                        <div class="instruction-card">
-                            <h3><i class="fas fa-cogs"></i> Funções</h3>
-                            <ul>
-                                <li class="compact-text">Para editar um item, clique no ícone <i class="fas fa-edit" style="color: #3498db;"></i></li>
-                                <li class="compact-text">Para remover um item, clique no ícone <i class="fas fa-times" style="color: #e74c3c;"></i></li>
-                                <li class="compact-text">Use <span class="highlight">"Limpar Tudo"</span> para reiniciar a calculadora</li>
-                                <li class="compact-text">Pressione <span class="shortcut-key">Enter</span> para adicionar itens rapidamente</li>
-                                <li class="compact-text">Use <span class="shortcut-key">Tab</span> para navegar entre os campos</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="tab-content" id="atalhos-content">
-                        <div class="instruction-card">
-                            <h3><极速赛车开奖直播i class="fas fa-keyboard"></i> Atalhos</h3>
-                            <ul>
-                                <li class="compact-text"><span class="shortcut-key">Enter</span> - Adicionar item</极速赛车开奖直播li>
-                                <li class="compact-text"><span class="shortcut-key">Tab</span> - Navegar entre campos</li>
-                                <li class="compact-text"><span class="shortcut-key">Click</span> - Selecionar item rápido</li>
-                                <li class="compact-text"><span class="shortcut-key">Esc极速赛车开奖直播</span> - Desselecionar item</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="panel supplies-panel">
-                <h2><i class="fas fa-plus-circle"></i> Adicionar Supplies</h2>
-                
-                <div class="form-group">
-                    <label>Selecione um Item:</label>
-                    <div class="quick-items">
-                        <div class="quick-item" data-price="145" data-name="UH Rune">
-                            <div>UH Rune</div>
-                            <div class="quick-item-price">145 gp</div>
-                        </div>
-                        <div class="quick-item" data-price="330" data-name="SD Rune">
-                            <div>SD Rune</div>
-                            <div class="quick-item-price">330 gp</div>
-                        </div>
-                        <div class="quick-item" data-price="260" data-name="Explosion Rune">
-                            <div>Explosion Rune</div>
-                            <div class="quick-item-price">260 gp</div>
-                        </div>
-                        <div class="quick-item" data-price="85" data-name="HMM Rune">
-                            <div>HMM Rune</div>
-                            <div class="quick-item-price">85 gp</div>
-                        </div>
-                        <div class="quick-item" data-price="55" data-name="Biriba/Bolt">
-                            <div>Biriba/Bolt</div>
-                            <div class="quick-item-price">55 gp</div>
-                        </div>
-                        <div class="quick-item" data-price="850" data-name="Big Mana Potion">
-                            <div>Big Mana Potion</div>
-                            <div class="quick-item-price">850 gp</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="input-row">
-                    <div class="form-group">
-                        <label for="qtdInicial">Quantidade Levada:</label>
-                        <input type="number" id="qtdInicial" min="0" placeholder="Ex: 100">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="qtdRestante">Quantidade Restante:</label>
-                        <input type="number" id="qtdRestante" min="0" placeholder="Ex: 25 (deixe em branco se usou tudo)">
-                    </div>
-                </div>
-                
-                <div class="buttons">
-                    <button class="btn-add" id="btn-adicionar">
-                        <i class="fas fa-plus"></i> Adicionar Item
-                    </button>
-                    <button class="btn-calculate" id="btn-calcular">
-                        <i class="fas fa-calculator"></i> Calcular
-                    </button>
-                    <button class="btn-reset" id="btn-reset">
-                        <i class="fas fa-trash"></i> Limpar Tudo
-                    </button>
-                </div>
-            </div>
-        </div>
-        
-        <div class="panel" id="supplies-added-panel">
-            <h2><i class="fas fa-list"></i> Supplies Adicionados</h2>
-            
-            <ul id="lista">
-                <li class="empty-state">Nenhum supply adicionado ainda</li>
-            </ul>
-        </div>
-        
-        <div class="resultado" id="resultado">
-            <h2><i class="fas fa-file-invoice-dollar"></i> Resumo da Hunt</h2>
-            
-            <span id="total">0 gp</span>
-            
-            <table class="results-table">
-                <thead>
-                    <tr>
-                        <th>Item</th>
-                        <th>Quantidade<br>Levada (BP)</th>
-                        <th>Quantidade<br>Restante (BP)</th>
-                        <th>Gasto (BP)</th>
-                        <th>Preço<br>Unit.</th>
-                        <th>Total</th>
-                    </tr>
-                </thead>
-                <tbody id="results-body">
-                    <!-- Os resultados serão inseridos aqui -->
-                </tbody>
-            </table>
-            
-            <button class="btn-back" id="btn-voltar">
-                <i class="fas fa-arrow-left"></i> Voltar para Lista
-            </button>
-        </div>
-    </div>
+document.addEventListener('DOMContentLoaded', function() {
+    // Variáveis globais
+    let selectedItem = null;
+    let suppliesList = [];
+    
+    // Elementos DOM
+    const quickItems = document.querySelectorAll('.quick-item');
+    const qtdInicialInput = document.getElementById('qtdInicial');
+    const qtdRestanteInput = document.getElementById('qtdRestante');
+    const btnAdicionar = document.getElementById('btn-adicionar');
+    const btnCalcular = document.getElementById('btn-calcular');
+    const btnReset = document.getElementById('btn-reset');
+    const btnVoltar = document.getElementById('btn-voltar');
+    const listaElement = document.getElementById('lista');
+    const resultadoElement = document.getElementById('resultado');
+    const totalElement = document.getElementById('total');
+    const resultsBody = document.getElementById('results-body');
+    const suppliesAddedPanel = document.getElementById('supplies-added-panel');
 
-    <script src="script.js"></script>
-</body>
-</html>
+    // Sistema de abas para instruções
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+    
+    // Função para alternar abas
+    function switchTab(tabId) {
+        // Remove a classe active de todos os botões e conteúdos
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        tabContents.forEach(content => content.classList.remove('active'));
+        
+        // Adiciona a classe active ao botão clicado
+        document.querySelector(`.tab-btn[data-tab="${tabId}"]`).classList.add('active');
+        
+        // Mostra o conteúdo correspondente
+        document.getElementById(`${tabId}-content`).classList.add('active');
+    }
+    
+    // Adiciona event listeners para os botões de aba
+    tabButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const tabId = this.getAttribute('data-tab');
+            switchTab(tabId);
+        });
+    });
+
+    // Seleção de itens rápidos
+    quickItems.forEach(item => {
+        item.addEventListener('click', function() {
+            // Remove a seleção anterior
+            quickItems.forEach(i => i.classList.remove('selected'));
+            
+            // Adiciona seleção ao item atual
+            this.classList.add('selected');
+            
+            // Armazena o item selecionado
+            selectedItem = {
+                name: this.getAttribute('data-name'),
+                price: parseInt(this.getAttribute('data-price'))
+            };
+            
+            // Foca no campo de quantidade inicial
+            qtdInicialInput.focus();
+        });
+    });
+
+    // Adicionar item ao pressionar Enter
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            btnAdicionar.click();
+        }
+        
+        if (e.key === 'Escape') {
+            quickItems.forEach(i => i.classList.remove('selected'));
+            selectedItem = null;
+        }
+    });
+
+    // Adicionar item à lista
+    btnAdicionar.addEventListener('click', function() {
+        if (!selectedItem) {
+            showFeedback('Por favor, selecione um item primeiro.', 'error');
+            return;
+        }
+        
+        const qtdInicial = parseInt(qtdInicialInput.value);
+        const qtdRestante = parseInt(qtdRestanteInput.value);
+        
+        if (isNaN(qtdInicial) || isNaN(qtdRestante)) {
+            showFeedback('Por favor, preencha ambas as quantidades.', 'error');
+            return;
+        }
+        
+        if (qtdInicial < qtdRestante) {
+            showFeedback('A quantidade restante não pode ser maior que a quantidade levada.', 'error');
+            return;
+        }
+        
+        // Calcula a quantidade usada e o custo total
+        const qtdUsada = qtdInicial - qtdRestante;
+        const custoTotal = qtdUsada * selectedItem.price;
+        
+        // Adiciona à lista de supplies
+        const supply = {
+            id: Date.now(), // ID único para edição/remoção
+            name: selectedItem.name,
+            price: selectedItem.price,
+            qtdInicial: qtdInicial,
+            qtdRestante: qtdRestante,
+            qtdUsada: qtdUsada,
+            custoTotal: custoTotal
+        };
+        
+        suppliesList.push(supply);
+        updateSuppliesList();
+        
+        // Limpa os campos
+        qtdInicialInput.value = '';
+        qtdRestanteInput.value = '';
+        quickItems.forEach(i => i.classList.remove('selected'));
+        selectedItem = null;
+        
+        showFeedback('Item adicionado com sucesso!', 'success');
+    });
+
+    // Calcular totais
+    btnCalcular.addEventListener('click', function() {
+        if (suppliesList.length === 0) {
+            showFeedback('Adicione pelo menos um item antes de calcular.', 'error');
+            return;
+        }
+        
+        // Calcula o total geral
+        const totalGeral = suppliesList.reduce((total, supply) => total + supply.custoTotal, 0);
+        totalElement.textContent = `${totalGeral.toLocaleString()} gp`;
+        
+        // Preenche a tabela de resultados
+        resultsBody.innerHTML = '';
+        suppliesList.forEach(supply => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td class="item-name">${supply.name}</td>
+                <td>${supply.qtdInicial}</td>
+                <td>${supply.qtdRestante}</td>
+                <td>${supply.qtdUsada}</td>
+                <td>${supply.price.toLocaleString()} gp</td>
+                <td class="item-cost">${supply.custoTotal.toLocaleString()} gp</td>
+            `;
+            resultsBody.appendChild(row);
+        });
+        
+        // Mostra o painel de resultados e esconde a lista
+        suppliesAddedPanel.style.display = 'none';
+        resultadoElement.style.display = 'block';
+    });
+
+    // Voltar para a lista
+    btnVoltar.addEventListener('click', function() {
+        resultadoElement.style.display = 'none';
+        suppliesAddedPanel.style.display = 'block';
+    });
+
+    // Resetar tudo
+    btnReset.addEventListener('click', function() {
+        if (confirm('Tem certeza que deseja limpar todos os supplies adicionados?')) {
+            suppliesList = [];
+            updateSuppliesList();
+            showFeedback('Todos os supplies foram removidos.', 'success');
+        }
+    });
+
+    // Atualizar a lista de supplies na interface
+    function updateSuppliesList() {
+        if (suppliesList.length === 0) {
+            listaElement.innerHTML = '<li class="empty-state">Nenhum supply adicionado ainda</li>';
+            return;
+        }
+        
+        listaElement.innerHTML = '';
+        suppliesList.forEach(supply => {
+            const li = document.createElement('li');
+            li.innerHTML = `
+                <div class="item-info">
+                    <div class="item-details">
+                        <span class="item-name">${supply.name}</span>
+                        <span>Levados: ${supply.qtdInicial}</span>
+                        <span>Restantes: ${supply.qtdRestante}</span>
+                       极速赛车开奖直播 <span class="item-total">${supply.custoTotal.toLocaleString()} gp</span>
+                    </div>
+                </div>
+                <div class="item-actions">
+                    <button class="btn-edit" data-id="${supply.id}">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="btn-delete" data-id="${supply.id}">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            `;
+            listaElement.appendChild(li);
+        });
+        
+        // Adiciona event listeners para os botões de editar e excluir
+        document.querySelectorAll('.btn-edit').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const id = parseInt(this.getAttribute('data-id'));
+                editSupply(id);
+            });
+        });
+        
+        document.querySelectorAll('.btn-delete').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const id = parseInt(this.getAttribute('data-id'));
+                deleteSupply(id);
+            });
+        });
+    }
+
+    // Editar supply
+    function editSupply(id) {
+        const supply = suppliesList.find(item => item.id === id);
+        if (!supply) return;
+        
+        // Preenche o formulário com os dados do supply
+        quickItems.forEach(item => {
+            if (item.getAttribute('data-name') === supply.name) {
+                item.classList.add('selected');
+                selectedItem = {
+                    name: supply.name,
+                    price: supply.price
+                };
+            }
+        });
+        
+        qtd极速赛车开奖直播InicialInput.value = supply.qtdInicial;
+        qtdRestanteInput.value = supply.qtdRestante;
+        
+        // Remove o supply da lista
+        suppliesList = suppliesList.filter(item => item.id !== id);
+        updateSuppliesList();
+        
+        showFeedback('Item pronto para edição. Faça as alterações e clique em Adicionar Item.', 'info');
+    }
+
+    // Excluir supply
+    function deleteSupply(id) {
+        suppliesList = suppliesList.filter(item => item.id !== id);
+        updateSuppliesList();
+        showFeedback('Item removido com sucesso.', 'success');
+    }
+
+    // Mostrar feedback para o usuário
+    function showFeedback(message, type) {
+        // Remove feedback anterior se existir
+        const existingFeedback = document.getElementById('feedback-message');
+        if (existingFeedback) {
+            existingFeedback.remove();
+        }
+        
+        // Cria novo elemento de feedback
+        const feedback = document.createElement('div');
+        feedback.id = 'feedback-message';
+        feedback.textContent = message;
+        
+        // Aplica estilos com base no tipo
+        switch(type) {
+            case 'error':
+                feedback.style.backgroundColor = '#e74c3c';
+                break;
+            case 'success':
+                feedback.style.backgroundColor = '#27ae60';
+                break;
+            case 'info':
+                feedback.style.backgroundColor = '#3498db';
+                break;
+            default:
+                feedback.style.backgroundColor = '#7f8c8d';
+        }
+        
+        // Adiciona ao documento
+        document.body.appendChild(feedback);
+        
+        // Remove após 3 segundos
+        setTimeout(() => {
+            if (feedback.parentNode) {
+                feedback.parentNode.removeChild(feedback);
+            }
+        }, 3000);
+    }
+});
