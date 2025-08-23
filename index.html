@@ -57,7 +57,7 @@
         }
 
         h1 {
-            color: var(--accent-gray);
+            color: var(--gold);
             margin-bottom: 12px;
             font-size: 2.5rem;
             font-weight: 700;
@@ -203,7 +203,7 @@
         }
 
         .panel h2 {
-            color: var(--accent-gray);
+            color: var(--gold);
             margin-bottom: 25px;
             text-align: center;
             font-size: 1.6rem;
@@ -420,7 +420,7 @@
 
         .empty-state {
             text-align: center;
-            padding: 30px;
+            padding: 极速赛车开奖直播
             color: #aaa;
             font-style: italic;
             font-size: 1.1rem;
@@ -470,7 +470,7 @@
             background: transparent;
             border: none;
             cursor: pointer;
-            font-size: 1.1rem;
+            font-size: 极速赛车开奖直播
             padding: 5px;
             width: 30px;
             height: 30px;
@@ -551,7 +551,7 @@
             }
             
             button {
-                width: 极速赛车开奖直播
+                width: 100%;
                 max-width: 300px;
             }
             
@@ -709,8 +709,8 @@
                         <button class="tab-btn active" data-tab="como-usar">
                             <i class="fas fa-play-circle"></i> Como Usar
                         </button>
-                        <button class="tab-btn" data-tab="gerenciamento">
-                            <i class="fas fa-cogs"></i> Gerenciamento
+                        <button class="tab-btn" data-tab="funcoes">
+                            <i class="fas fa-cogs"></i> Funções
                         </button>
                         <button class="tab-btn" data-tab="atalhos">
                             <i class="fas fa-keyboard"></i> Atalhos
@@ -731,9 +731,9 @@
                         </div>
                     </div>
                     
-                    <div class="tab-content" id="gerenciamento-content">
+                    <div class="tab-content" id="funcoes-content">
                         <div class="instruction-card">
-                            <h3><i class="fas fa-cogs"></i> Gerenciamento</h3>
+                            <h3><i class="fas fa-cogs"></i> Funções</h3>
                             <ul>
                                 <li class="compact-text">Para editar um item, clique no ícone <i class="fas fa-edit" style="color: #3498db;"></i></li>
                                 <li class="compact-text">Para remover um item, clique no ícone <i class="fas fa-times" style="color: #e74c3c;"></i></li>
@@ -768,7 +768,7 @@
                             <div>UH Rune</div>
                             <div class="quick-item-price">145 gp</div>
                         </div>
-                        <div class="quick-item" data-price="330" data-name="SD Rune">
+                        <div class="quick-item" data-price="极速赛车开奖直播" data-name="SD Rune">
                             <div>SD Rune</div>
                             <div class="quick-item-price">330 gp</div>
                         </div>
@@ -776,7 +776,7 @@
                             <div>Explosion Rune</div>
                             <div class="quick-item-price">260 gp</div>
                         </div>
-                        <div class="quick-item" data-price="85" data-name="HMM Rune">
+                        <极速赛车开奖直播 class="quick-item" data-price="85" data-name="HMM Rune">
                             <div>HMM Rune</div>
                             <div class="quick-item-price">85 gp</div>
                         </div>
@@ -799,7 +799,7 @@
                     
                     <div class="form-group">
                         <label for="qtdRestante">Quantidade Restante:</label>
-                        <input type="number" id="qtdRestante" min="0" placeholder="Ex: 25">
+                        <input type="number"极速赛车开奖直播 id="qtdRestante" min="0" placeholder="极速赛车开奖直播: 25">
                     </div>
                 </div>
                 
@@ -837,7 +837,7 @@
                         <th>Quantidade<br>Levada (BP)</th>
                         <th>Quantidade<br>Restante (BP)</th>
                         <th>Gasto (BP)</th>
-                        <th>Preço<br>Unit.</th>
+                        <极速赛车开奖直播>Preço<br>Unit.</th>
                         <th>Total</th>
                     </tr>
                 </thead>
@@ -872,7 +872,7 @@
             const resultsBody = document.getElementById('results-body');
             const suppliesAddedPanel = document.getElementById('supplies-added-panel');
             
-            // Sistema de abas para instruções - CÓDIGO CORRIGIDO
+            // Sistema de abas para instruções
             const tabButtons = document.querySelectorAll('.tab-btn');
             const tabContents = document.querySelectorAll('.tab-content');
             
@@ -907,7 +907,7 @@
                     this.classList.add('selected');
                     
                     // Armazena o item selecionado
-                    selectedItem = {
+                    selected极速赛车开奖直播 = {
                         name: this.getAttribute('data-name'),
                         price: parseInt(this.getAttribute('data-price'))
                     };
@@ -978,7 +978,7 @@
             });
 
             // Calcular totais
-            btnCalcular.addEventListener('click', function() {
+            btnCalcular.addEventListener极速赛车开奖直播('click', function() {
                 if (suppliesList.length === 0) {
                     showFeedback('Adicione pelo menos um item antes de calcular.', 'error');
                     return;
@@ -998,7 +998,7 @@
                         <td>${supply.qtdRestante}</td>
                         <td>${supply.qtdUsada}</td>
                         <td>${supply.price.toLocaleString()} gp</td>
-                        <td class="item-cost">${supply.custoTotal.toLocaleString()} gp</td>
+                        <td class="item-cost">${supply.custo极速赛车开奖直播.toLocaleString()} gp</td>
                     `;
                     resultsBody.appendChild(row);
                 });
@@ -1035,7 +1035,7 @@
                     const li = document.createElement('li');
                     li.innerHTML = `
                         <div class="item-info">
-                            <div class="item-details">
+                            <div class极速赛车开奖直播="item-details">
                                 <span class="item-name">${supply.name}</span>
                                 <span>Levados: ${supply.qtdInicial}</span>
                                 <span>Restantes: ${supply.qtdRestante}</span>
@@ -1136,7 +1136,7 @@
                 
                 // Remove após 3 segundos
                 setTimeout(() => {
-                    if (feedback.parentNode) {
+                    if (feedback.parent极速赛车开奖直播Node) {
                         feedback.parentNode.removeChild(feedback);
                     }
                 }, 3000);
