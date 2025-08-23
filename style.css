@@ -209,7 +209,7 @@ button:hover {
 
 .quick-items {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas fixas */
     gap: 12px;
     margin-bottom: 25px;
 }
@@ -437,7 +437,7 @@ button:hover {
     }
     
     .quick-items {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr); /* 2 colunas em mobile */
     }
     
     #total {
@@ -480,7 +480,7 @@ button:hover {
     }
     
     .quick-items {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* 1 coluna em telas muito pequenas */
     }
     
     #total {
