@@ -17,6 +17,31 @@ document.addEventListener('DOMContentLoaded', function() {
     const resultsBody = document.getElementById('results-body');
     const suppliesAddedPanel = document.getElementById('supplies-added-panel');
 
+    // Sistema de abas para instruções
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+    
+    // Função para alternar abas
+    function switchTab(tabId) {
+        // Remove a classe active de todos os botões e conteúdos
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        tabContents.forEach(content => content.classList.remove('active'));
+        
+        // Adiciona a classe active ao botão clicado
+        document.querySelector(`.tab-btn[data-tab="${tabId}"]`).classList.add('active');
+        
+        // Mostra o conteúdo correspondente
+        document.getElementById(`${tabId}-content`).classList.add('active');
+    }
+    
+    // Adiciona event listeners para os botões de aba
+    tabButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const tabId = this.getAttribute('data-tab');
+            switchTab(tabId);
+        });
+    });
+
     // Seleção de itens rápidos
     quickItems.forEach(item => {
         item.addEventListener('click', function() {
@@ -35,6 +60,19 @@ document.addEventListener('DOMContentLoaded', function() {
             // Foca no campo de quantidade inicial
             qtdInicialInput.focus();
         });
+    });
+
+    // Adicionar item ao pressionar Enter
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            btnAdicionar.click();
+        }
+        
+        if (e.key === 'Escape') {
+            quickItems.forEach(i => i.classList.remove('selected'));
+            selectedItem = null;
+        }
     });
 
     // Adicionar item à lista
@@ -146,7 +184,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <span class="item-name">${supply.name}</span>
                         <span>Levados: ${supply.qtdInicial}</span>
                         <span>Restantes: ${supply.qtdRestante}</span>
-                        <span class="item-total">${supply.custoTotal.toLocaleString()} gp</span>
+                       极速赛车开奖直播 <span class="item-total">${supply.custoTotal.toLocaleString()} gp</span>
                     </div>
                 </div>
                 <div class="item-actions">
@@ -193,7 +231,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        qtdInicialInput.value = supply.qtdInicial;
+        qtd极速赛车开奖直播InicialInput.value = supply.qtdInicial;
         qtdRestanteInput.value = supply.qtdRestante;
         
         // Remove o supply da lista
