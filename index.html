@@ -97,33 +97,41 @@
         .tab-buttons {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            margin-bottom: 20px;
+            gap: 10px;
+            margin-bottom: 25px;
             flex-wrap: wrap;
         }
 
         .tab-btn {
-            padding: 12px 20px;
+            padding: 14px 20px;
             background: var(--primary-blue);
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             color: var(--text-white);
             font-weight: 600;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             transition: all 0.3s;
+            flex: 1;
+            min-width: 120px;
+            justify-content: center;
+            border: 1px solid transparent;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
         .tab-btn:hover {
             background: #34495e;
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
         }
 
         .tab-btn.active {
             background: var(--gold);
             color: var(--primary-dark);
+            border-color: var(--accent-gray);
+            box-shadow: 0 4px 10px rgba(241, 196, 15, 0.3);
         }
 
         .tab-content {
@@ -138,26 +146,28 @@
         .instruction-card {
             background: rgba(44, 62, 80, 0.3);
             border-radius: 8px;
-            padding: 20px;
+            padding: 25px;
             border-left: 4px solid var(--gold);
             text-align: left;
         }
 
         .instruction-card h3 {
             color: var(--gold);
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 12px;
+            font-size: 1.3rem;
         }
 
         .instruction-card ul, .instruction-card ol {
-            padding-left: 20px;
+            padding-left: 25px;
         }
 
         .instruction-card li {
-            margin-bottom: 8px;
+            margin-bottom: 12px;
+            line-height: 1.5;
         }
 
         .highlight {
@@ -169,11 +179,12 @@
             display: inline-block;
             background: var(--primary-blue);
             color: var(--text-white);
-            padding: 2px 8px;
+            padding: 3px 10px;
             border-radius: 4px;
             font-size: 0.9em;
-            margin: 0 3px;
+            margin: 0 4px;
             border: 1px solid var(--accent-gray);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
         }
 
         .supplies-panel {
@@ -568,13 +579,26 @@
             }
             
             .tab-buttons {
-                flex-direction: column;
+                flex-direction: row;
                 align-items: center;
             }
             
             .tab-btn {
+                width: auto;
+                max-width: none;
+                padding: 12px 15px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .tab-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .tab-btn {
                 width: 100%;
-                max-width: 250px;
+                max-width: none;
             }
         }
 
@@ -623,6 +647,11 @@
             .results-table th, 
             .results-table td {
                 padding: 8px 5px;
+            }
+            
+            .tab-btn {
+                padding: 10px 12px;
+                font-size: 0.9rem;
             }
         }
 
