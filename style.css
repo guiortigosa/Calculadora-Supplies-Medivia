@@ -534,12 +534,13 @@ button:hover {
     left: 50%;
     transform: translateX(-50%);
     padding: 12px 24px;
-    background: var(--green);
     color: white;
     border-radius: 5px;
     z-index: 1000;
     box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-    transition: opacity 0.3s ease;
+    transition: all 0.3s ease;
     font-weight: 500;
+    text-align: center;
+    max-width: 80%;
 }
 
