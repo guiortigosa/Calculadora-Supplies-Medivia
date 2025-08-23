@@ -163,11 +163,17 @@
 
         .instruction-card ul, .instruction-card ol {
             padding-left: 25px;
+            font-size: 0.95rem;
         }
 
         .instruction-card li {
             margin-bottom: 12px;
             line-height: 1.5;
+        }
+
+        .compact-text {
+            font-size: 0.9rem;
+            line-height: 1.4;
         }
 
         .highlight {
@@ -710,9 +716,9 @@
                         <div class="instruction-card">
                             <h3><i class="fas fa-play-circle"></i> Como Usar</h3>
                             <ol>
-                                <li>Selecione um item da lista de supplies</li>
-                                <li>Informe a quantidade levada para a hunt</li>
-                                <li>Informe a quantidade restante após a hunt</li>
+                                <li class="compact-text">Selecione um item da lista de supplies</li>
+                                <li class="compact-text">Informe a quantidade levada para a hunt</li>
+                                <li class="compact-text">Informe a quantidade restante após a hunt</li>
                                 <li>Clique em <span class="highlight">"Adicionar Item"</span> ou pressione <span class="shortcut-key">Enter</span></li>
                                 <li>Repita para todos os itens utilizados</li>
                                 <li>Clique em <span class="highlight">"Calcular"</span> para ver o resumo completo</li>
@@ -1038,7 +1044,7 @@
                     listaElement.appendChild(li);
                 });
                 
-                // Adiciona event listeners para os botões de editar e excluir
+                // Adiciona event listeners para os botões de editar and excluir
                 document.querySelectorAll('.btn-edit').forEach(btn => {
                     btn.addEventListener('click', function() {
                         const id = parseInt(this.getAttribute('data-id'));
