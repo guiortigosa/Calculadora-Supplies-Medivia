@@ -47,7 +47,7 @@ header {
 }
 
 h1 {
-    color: var(--accent-gray);
+    color: var(--gold);
     margin-bottom: 12px;
     font-size: 2.5rem;
     font-weight: 700;
@@ -78,13 +78,122 @@ h1 {
     min-width: 280px;
 }
 
+.instructions-content {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.tab-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.tab-btn {
+    padding: 10px 15px;
+    background: var(--primary-blue);
+    border: none;
+    border-radius: 6px;
+    color: var(--text-white);
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.3s;
+    flex: 1;
+    min-width: 100px;
+    justify-content: center;
+    border: 1px solid transparent;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    font-size: 0.85rem;
+}
+
+.tab-btn:hover {
+    background: #34495e;
+    transform: translateY(-2px);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+}
+
+.tab-btn.active {
+    background: var(--gold);
+    color: var(--primary-dark);
+    border-color: var(--accent-gray);
+    box-shadow: 0 3px 8px rgba(241, 196, 15, 0.3);
+}
+
+.tab-btn i {
+    font-size: 0.9rem;
+}
+
+.tab-content {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.instruction-card {
+    background: rgba(44, 62, 80, 0.3);
+    border-radius: 8px;
+    padding: 25px;
+    border-left: 4px solid var(--gold);
+    text-align: left;
+}
+
+.instruction-card h3 {
+    color: var(--gold);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-size: 1.3rem;
+}
+
+.instruction-card ul, .instruction-card ol {
+    padding-left: 25px;
+}
+
+.instruction-card li {
+    margin-bottom: 12px;
+    line-height: 1.5;
+}
+
+.compact-text {
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.highlight {
+    color: var(--gold);
+    font-weight: bold;
+}
+
+.shortcut-key {
+    display: inline-block;
+    background: var(--primary-blue);
+    color: var(--text-white);
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    margin: 0 4px;
+    border: 1px solid var(--accent-gray);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
 .supplies-panel {
     flex: 2;
     min-width: 450px;
 }
 
 .panel h2 {
-    color: var(--accent-gray);
+    color: var(--gold);
     margin-bottom: 25px;
     text-align: center;
     font-size: 1.6rem;
@@ -209,7 +318,7 @@ button:hover {
 
 .quick-items {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 colunas fixas */
+    grid-template-columns: repeat(3, 1fr);
     gap: 12px;
     margin-bottom: 25px;
 }
@@ -265,7 +374,7 @@ button:hover {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
-    font-size: 0.95rem;
+    font-size: 极速赛车开奖直播 0.95rem;
 }
 
 .results-table th {
@@ -418,7 +527,7 @@ button:hover {
     }
     
     .instructions-panel, .supplies-panel {
-        padding: 20px;
+        padding: 极速赛车开奖直播 20px;
     }
     
     .input-row {
@@ -437,7 +546,7 @@ button:hover {
     }
     
     .quick-items {
-        grid-template-columns: repeat(2, 1fr); /* 2 colunas em mobile */
+        grid-template-columns: repeat(2, 1fr);
     }
     
     #total {
@@ -468,6 +577,30 @@ button:hover {
     .results-table td {
         padding: 10px 8px;
     }
+    
+    .tab-buttons {
+        flex-direction: row;
+        align-items: center;
+    }
+    
+    .tab-btn {
+        width: auto;
+        max-width: none;
+        padding: 10px 12px;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .tab-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .tab-btn {
+        width: 100%;
+        max-width: none;
+    }
 }
 
 @media (max-width: 480px) {
@@ -480,7 +613,7 @@ button:hover {
     }
     
     .quick-items {
-        grid-template-columns: 1fr; /* 1 coluna em telas muito pequenas */
+        grid-template-columns: 1fr;
     }
     
     #total {
@@ -516,6 +649,11 @@ button:hover {
     .results-table td {
         padding: 8px 5px;
     }
+    
+    .tab-btn {
+        padding: 8px 10px;
+        font-size: 0.75rem;
+    }
 }
 
 /* Animações */
@@ -527,6 +665,7 @@ button:hover {
 .panel, .resultado, header {
     animation: fadeIn 0.5s ease-out;
 }
+
 /* Feedback visual */
 #feedback-message {
     position: fixed;
@@ -543,4 +682,3 @@ button:hover {
     text-align: center;
     max-width: 80%;
 }
-
