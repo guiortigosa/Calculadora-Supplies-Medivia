@@ -551,7 +551,7 @@
             }
             
             button {
-                width: 100%;
+                width: 极速赛车开奖直播
                 max-width: 300px;
             }
             
@@ -872,23 +872,28 @@
             const resultsBody = document.getElementById('results-body');
             const suppliesAddedPanel = document.getElementById('supplies-added-panel');
             
-            // Sistema de abas para instruções
+            // Sistema de abas para instruções - CÓDIGO CORRIGIDO
             const tabButtons = document.querySelectorAll('.tab-btn');
             const tabContents = document.querySelectorAll('.tab-content');
             
+            // Função para alternar abas
+            function switchTab(tabId) {
+                // Remove a classe active de todos os botões e conteúdos
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+                
+                // Adiciona a classe active ao botão clicado
+                document.querySelector(`.tab-btn[data-tab="${tabId}"]`).classList.add('active');
+                
+                // Mostra o conteúdo correspondente
+                document.getElementById(`${tabId}-content`).classList.add('active');
+            }
+            
+            // Adiciona event listeners para os botões de aba
             tabButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const tabId = button.getAttribute('data-tab');
-                    
-                    // Remove a classe active de todos os botões e conteúdos
-                    tabButtons.forEach(btn => btn.classList.remove('active'));
-                    tabContents.forEach(content => content.classList.remove('active'));
-                    
-                    // Adiciona a classe active ao botão clicado
-                    button.classList.add('active');
-                    
-                    // Mostra o conteúdo correspondente
-                    document.getElementById(`${tabId}-content`).classList.add('active');
+                button.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    switchTab(tabId);
                 });
             });
 
@@ -990,7 +995,7 @@
                     row.innerHTML = `
                         <td class="item-name">${supply.name}</td>
                         <td>${supply.qtdInicial}</td>
-                        <td>${supply.qtdRestante</td>
+                        <td>${supply.qtdRestante}</td>
                         <td>${supply.qtdUsada}</td>
                         <td>${supply.price.toLocaleString()} gp</td>
                         <td class="item-cost">${supply.custoTotal.toLocaleString()} gp</td>
@@ -1049,7 +1054,7 @@
                     listaElement.appendChild(li);
                 });
                 
-                // Adiciona event listeners para os botões de editar and excluir
+                // Adiciona event listeners para os botões de editar e excluir
                 document.querySelectorAll('.btn-edit').forEach(btn => {
                     btn.addEventListener('click', function() {
                         const id = parseInt(this.getAttribute('data-id'));
