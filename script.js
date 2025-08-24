@@ -62,11 +62,22 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Adicionar item ao pressionar Enter
+    // Adicionar item ao pressionar Enter - MODIFICADO
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Enter') {
             e.preventDefault();
-            btnAdicionar.click();
+            
+            // Se estiver no campo de quantidade inicial, focar no campo de quantidade restante
+            if (document.activeElement === qtdInicialInput && qtdInicialInput.value.trim() !== '') {
+                qtdRestanteInput.focus();
+                return;
+            }
+            
+            // Se estiver no campo de quantidade restante ou se já tiver preenchido ambos, adicionar item
+            if (document.activeElement === qtdRestanteInput || 
+                (qtdInicialInput.value.trim() !== '' && qtdRestanteInput.value.trim() !== '')) {
+                btnAdicionar.click();
+            }
         }
         
         if (e.key === 'Escape') {
@@ -127,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function() {
         showFeedback('Item adicionado com sucesso!', 'success');
     });
 
-    // Calcular totais
+    // Calcular totais - MODIFICADO
     btnCalcular.addEventListener('click', function() {
         if (suppliesList.length === 0) {
             showFeedback('Adicione pelo menos um item antes de calcular.', 'error');
@@ -136,19 +147,46 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Calcula o total geral
         const totalGeral = suppliesList.reduce((total, supply) => total + supply.custoTotal, 0);
-        totalElement.textContent = `${totalGeral.toLocaleString()} gp`;
+        
+        // Formata o total em k/kk
+        let formattedTotal;
+        if (totalGeral >= 1000000) {
+            formattedTotal = `${(totalGeral / 1000000).toFixed(2)}kk`;
+        } else if (totalGeral >= 1000) {
+            formattedTotal = `${(totalGeral / 1000).toFixed(1)}k`;
+        } else {
+            formattedTotal = `${totalGeral} gp`;
+        }
+        
+        totalElement.textContent = formattedTotal;
         
         // Preenche a tabela de resultados
         resultsBody.innerHTML = '';
         suppliesList.forEach(supply => {
             const row = document.createElement('tr');
+            
+            // Calcula as quantidades em BP
+            const qtdInicialBP = Math.floor(supply.qtdInicial / 20);
+            const qtdRestanteBP = Math.floor(supply.qtdRestante / 20);
+            const qtdUsadaBP = Math.floor(supply.qtdUsada / 20);
+            
+            // Formata o custo total em k/kk
+            let formattedCustoTotal;
+            if (supply.custoTotal >= 1000000) {
+                formattedCustoTotal = `${(supply.custoTotal / 1000000).toFixed(2)}kk`;
+            } else if (supply.custoTotal >= 1000) {
+                formattedCustoTotal = `${(supply.custoTotal / 1000).toFixed(1)}k`;
+            } else {
+                formattedCustoTotal = `${supply.custoTotal} gp`;
+            }
+            
             row.innerHTML = `
                 <td class="item-name">${supply.name}</td>
-                <td>${supply.qtdInicial}</td>
-                <td>${supply.qtdRestante}</td>
-                <td>${supply.qtdUsada}</td>
+                <td>${supply.qtdInicial} (${qtdInicialBP} BP)</td>
+                <td>${supply.qtdRestante} (${qtdRestanteBP} BP)</td>
+                <td>${supply.qtdUsada} (${qtdUsadaBP} BP)</td>
                 <td>${supply.price.toLocaleString()} gp</td>
-                <td class="item-cost">${supply.custoTotal.toLocaleString()} gp</td>
+                <td class="item-cost">${formattedCustoTotal}</td>
             `;
             resultsBody.appendChild(row);
         });
