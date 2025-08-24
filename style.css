@@ -207,6 +207,21 @@ h1 {
     gap: 10px;
 }
 
+.resultado h2 {
+    color: var(--gold);
+    margin-bottom: 25px;
+    text-align: center;
+    font-size: 1.6rem;
+    border-bottom: 1px solid var(--accent-gray);
+    padding-bottom: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
 .form-group {
     margin-bottom: 25px;
 }
