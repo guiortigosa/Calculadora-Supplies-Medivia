@@ -83,10 +83,15 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         const qtdInicial = parseInt(qtdInicialInput.value);
-        const qtdRestante = parseInt(qtdRestanteInput.value);
+        let qtdRestante = parseInt(qtdRestanteInput.value);
         
-        if (isNaN(qtdInicial) || isNaN(qtdRestante)) {
-            showFeedback('Por favor, preencha ambas as quantidades.', 'error');
+        // Se a quantidade restante não for preenchida, define como 0
+        if (isNaN(qtdRestante)) {
+            qtdRestante = 0;
+        }
+        
+        if (isNaN(qtdInicial)) {
+            showFeedback('Por favor, preencha a quantidade levada.', 'error');
             return;
         }
         
@@ -184,7 +189,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <span class="item-name">${supply.name}</span>
                         <span>Levados: ${supply.qtdInicial}</span>
                         <span>Restantes: ${supply.qtdRestante}</span>
-                       极速赛车开奖直播 <span class="item-total">${supply.custoTotal.toLocaleString()} gp</span>
+                        <span class="item-total">${supply.custoTotal.toLocaleString()} gp</span>
                     </div>
                 </div>
                 <div class="item-actions">
@@ -231,7 +236,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        qtd极速赛车开奖直播InicialInput.value = supply.qtdInicial;
+        qtdInicialInput.value = supply.qtdInicial;
         qtdRestanteInput.value = supply.qtdRestante;
         
         // Remove o supply da lista
